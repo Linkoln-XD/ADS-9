@@ -75,8 +75,8 @@ std::vector<char> PMTree::getPerm1(int num) const {
   }
   std::vector<char> res;
   int rem = num;
-  for (const auto& child : root->vecCH){
-    if(getPermByTraversal(child.get(), rem, res)){
+  for (const auto& child : root->vecCH) {
+    if (getPermByTraversal(child.get(), rem, res)) {
       return res;
     }
   }
@@ -93,7 +93,7 @@ bool PMTree::getPermByTraversal(const Node* n, int& rem,
     }
   } else {
     for (const auto& child : n->vecCH) {
-      if(getPermByTraversal(child.get(), rem, res)) {
+      if (getPermByTraversal(child.get(), rem, res)) {
         return true;
       }
     }
@@ -103,14 +103,14 @@ bool PMTree::getPermByTraversal(const Node* n, int& rem,
 }
 
 std::vector<char> PMTree::getPerm2(int num) const {
-  if(num < 1 || num > tPerm || !root) {
+  if (num < 1 || num > tPerm || !root) {
     return {};
   }
   std::vector<char> res;
   int rem = num - 1;
-  for(const auto& child : root->vecCH) {
+  for (const auto& child : root->vecCH) {
     int chPerms = factorial(root->vecCH.size() - 1);
-    if(rem < chPerms) {
+    if (rem < chPerms) {
       res.push_back(child->znach);
       if (getPermByNavigation(child.get(), rem, res)) {
         return res;
@@ -142,15 +142,15 @@ int PMTree::factorial(int n) const{
   return (n == 1 || n == 0) ? 1 : factorial(n - 1) * n;
 }
 
-std::vector<std::vector<char>> getAllPerms(const PMTree& tree){
+std::vector<std::vector<char>> getAllPerms(const PMTree& tree) {
   return tree.getAllPerms();
 }
 
-std::vector<char> getPerm1(const PMTree& tree, int num){
+std::vector<char> getPerm1(const PMTree& tree, int num) {
   return tree.getPerm1(num);
 }
 
-std::vector<char> getPerm2(const PMTree& tree, int num){
+std::vector<char> getPerm2(const PMTree& tree, int num) {
   return tree.getPerm2(num);
 }
 
