@@ -9,7 +9,7 @@ class PMTree {
   struct Node {
     char znach;
     std::vector<std::unique_ptr<Node>> vecCH;
-    explicit Node(char val) : znach(v) {}
+    explicit Node(char v) : znach(v) {}
   };
   explicit PMTree(const std::vector<char>& el);
   ~PMTree() = default;
