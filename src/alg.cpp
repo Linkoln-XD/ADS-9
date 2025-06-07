@@ -9,7 +9,7 @@
 #include  "tree.h"
 
 PMTree::PMTree(const std::vector<char>& el) {
-  if(el.empty()) {
+  if (el.empty()) {
     root = nullptr;
     tPerm = 0;
     return;
@@ -19,10 +19,10 @@ PMTree::PMTree(const std::vector<char>& el) {
   for (char oneMoreEl : el) {
     root->vecCH.push_back(std::make_unique<Node>(oneMoreEl));
   }
-  for(auto& child : root->vecCH) {
+  for (auto& child : root->vecCH) {
     std::vector<char> rem;
     for (char oneMoreEl : el) {
-      if(oneMoreEl != child->znach) {
+      if (oneMoreEl != child->znach) {
         rem.push_back(oneMoreEl);
       }
     }
@@ -48,7 +48,7 @@ void PMTree::buildTree(Node* parent, const std::vector<char>& rem) {
 
 std::vector<std::vector<char>> PMTree::getAllPerms() const {
   std::vector<std::vector<char>> res;
-  if(!root) return res;
+  if (!root) return res;
   std::vector<char> cur;
   for (const auto& child : root->vecCH) {
     collectPerms(child.get(), cur, res);
@@ -75,7 +75,7 @@ std::vector<char> PMTree::getPerm1(int num) const {
   }
   std::vector<char> res;
   int rem = num;
-  for(const auto& child : root->vecCH){
+  for (const auto& child : root->vecCH){
     if(getPermByTraversal(child.get(), rem, res)){
       return res;
     }
@@ -92,7 +92,7 @@ bool PMTree::getPermByTraversal(const Node* n, int& rem,
       return true;
     }
   } else {
-    for(const auto& child : n->vecCH) {
+    for (const auto& child : n->vecCH) {
       if(getPermByTraversal(child.get(), rem, res)) {
         return true;
       }
@@ -128,7 +128,7 @@ bool PMTree::getPermByNavigation(const Node* n, int rem,
     return true;
   }
   int chPerms = factorial(n->vecCH.size() - 1);
-  for(const auto& child : n->vecCH) {
+  for (const auto& child : n->vecCH) {
     if(rem < chPerms) {
       res.push_back(child->znach);
       return getPermByNavigation(child.get(), rem, res);
