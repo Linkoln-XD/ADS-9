@@ -88,7 +88,7 @@ bool PMTree::getPermByTraversal(const Node* n, int& rem,
   res.push_back(n->znach);
   if (n->vecCH.empty()){
     rem--;
-    if(rem == 0){
+    if (rem == 0){
       return true;
     }
   } else {
@@ -129,7 +129,7 @@ bool PMTree::getPermByNavigation(const Node* n, int rem,
   }
   int chPerms = factorial(n->vecCH.size() - 1);
   for (const auto& child : n->vecCH) {
-    if(rem < chPerms) {
+    if (rem < chPerms) {
       res.push_back(child->znach);
       return getPermByNavigation(child.get(), rem, res);
     }
@@ -138,7 +138,7 @@ bool PMTree::getPermByNavigation(const Node* n, int rem,
   return false;
 }
 
-int PMTree::factorial(int n) const{
+int PMTree::factorial(int n) const {
   return (n == 1 || n == 0) ? 1 : factorial(n - 1) * n;
 }
 
