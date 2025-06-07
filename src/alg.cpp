@@ -86,9 +86,9 @@ std::vector<char> PMTree::getPerm1(int num) const {
 bool PMTree::getPermByTraversal(const Node* n, int& rem,
                                std::vector<char>& res) const {
   res.push_back(n->znach);
-  if (n->vecCH.empty()){
+  if (n->vecCH.empty()) {
     rem--;
-    if (rem == 0){
+    if (rem == 0) {
       return true;
     }
   } else {
@@ -123,8 +123,8 @@ std::vector<char> PMTree::getPerm2(int num) const {
 }
 
 bool PMTree::getPermByNavigation(const Node* n, int rem,
-                                std::vector<char>& res) const{
-  if(n->vecCH.empty()){
+                                std::vector<char>& res) const {
+  if(n->vecCH.empty()) {
     return true;
   }
   int chPerms = factorial(n->vecCH.size() - 1);
